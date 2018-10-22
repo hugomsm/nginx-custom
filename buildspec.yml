@@ -17,6 +17,6 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 780489678393.dkr.ecr.us-east-1.amazonaws.com/repo-publish:latest
-      - printf '[{"name":"simple-app","imageUri":"%s"}]' "$IMAGE_URI" > images.json
+      - printf '[{"name":"nginx-custom","imageUri":"%s"}]' "$IMAGE_URI" > images.json
 artifacts:
   files: images.json
