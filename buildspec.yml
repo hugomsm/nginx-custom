@@ -5,6 +5,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region us-east-1)
+      - IMAGE_URI="780489678393.dkr.ecr.us-east-1.amazonaws.com/repo-publish:latest"
   build:
     commands:
       - echo Build started on `date`
@@ -16,3 +17,6 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 780489678393.dkr.ecr.us-east-1.amazonaws.com/repo-publish:latest
+      - printf '[{"name":"simple-app","imageUri":"%s"}]' "$IMAGE_URI" > images.json
+artifacts:
+  files: images.json
