@@ -18,6 +18,6 @@ phases:
       - echo Pushing the Docker image...
       - docker push 780489678393.dkr.ecr.us-east-1.amazonaws.com/repo-publish:latest
       - printf '[{"name":"service-publish","imageUri":"%s"}]' "$IMAGE_URI" > images.json
-      - echo images.json
+      - cat images.json
 artifacts:
   files: images.json
